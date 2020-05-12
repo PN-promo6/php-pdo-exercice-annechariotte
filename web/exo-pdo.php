@@ -33,13 +33,23 @@ $console = $_GET['console'] ?? 'Xbox';
 // $requetePreparee->closeCursor();
 
 // $PDO->exec('INSERT INTO jeux_video(nom, possesseur, console, prix, nbre_joueurs_max, commentaires) VALUES("Prince of Persia", "Jellal", "PSP", 35, 1, "Profitez avant de devenir bipolaire")');
-$lastOwner = $_GET['lastOwner'] ?? 'AnneChariotte';
+
+// $lastOwner = $_GET['lastOwner'] ?? 'AnneChariotte';
+// $owner = $_GET['owner'] ?? 'AnneChariotte';
+
+// $preparedRequest = $PDO->prepare("UPDATE jeux_video set possesseur = :owner WHERE possesseur = :lastOwner");
+// $preparedRequest->execute(
+//     array(
+//         "lastOwner" => $lastOwner,
+//         "owner" => $owner
+//     )
+// );
+
 $owner = $_GET['owner'] ?? 'AnneChariotte';
 
-$preparedRequest = $PDO->prepare("UPDATE jeux_video set possesseur = :owner WHERE possesseur = :lastOwner");
+$preparedRequest = $PDO->prepare("DELETE from jeux_video WHERE possesseur = :owner");
 $preparedRequest->execute(
     array(
-        "lastOwner" => $lastOwner,
         "owner" => $owner
     )
 );
