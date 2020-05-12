@@ -34,6 +34,12 @@ $console = $_GET['console'] ?? 'Xbox';
 
 // $PDO->exec('INSERT INTO jeux_video(nom, possesseur, console, prix, nbre_joueurs_max, commentaires) VALUES("Prince of Persia", "Jellal", "PSP", 35, 1, "Profitez avant de devenir bipolaire")');
 $lastOwner = $_GET['lastOwner'] ?? 'AnneChariotte';
-$possesseur = $_GET['possesseur'] ?? 'AnneChariotte';
+$owner = $_GET['owner'] ?? 'AnneChariotte';
 
-$PDO->exec("UPDATE jeux_video set possesseur = '$possesseur' WHERE possesseur = '$lastOwner'");
+$preparedRequest = $PDO->prepare("UPDATE jeux_video set possesseur = :owner WHERE possesseur = :lastOwner");
+$preparedRequest->execute(
+    array(
+        "lastOwner" => $lastOwner,
+        "owner" => $owner
+    )
+);
