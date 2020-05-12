@@ -19,6 +19,11 @@
       <img src="img/icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
       Tiny Social Network
     </a>
+    <form method = "GET" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -72,9 +77,10 @@
                 </div>
                 <ul class="comments-list">
                   <?php
-                  $postId = $onePost['id'];
-                  if (isset($comments[$postId])) {
-                    foreach ($comments[$postId] as $comment) {
+                  $idPost = $onePost['id'];
+                  if (isset($comments[$idPost])) {
+                    foreach ($comments[$idPost] as $comment)
+                     {
                   ?>
                       <li class="comment">
                         <a class="pull-left" href="#">

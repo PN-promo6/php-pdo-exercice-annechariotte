@@ -26,3 +26,23 @@ function GetAllCommentsFromUserId($userId)
   );
   return $response->fetchAll();
 }
+
+function GetAllCommentsFromPostId($idPost)
+{
+  global $PDO;
+  $response = $PDO->query(
+    "SELECT comment.*, user.nickname from comment "
+      . " INNER JOIN user on user.id = comment.user_id"
+      . " WHERE comment.post_id = $idPost"
+
+  );
+  return $response->fetchAll();
+};
+
+function GetSearches()
+{
+  global $PDO;
+  $response = $PDO->query(
+    'SELECT post.* from post where post.content LIKE "" '
+  );
+};
